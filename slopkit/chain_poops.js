@@ -49,7 +49,7 @@ function hostFail() {
     var m = document.getElementById("msgs");
     if (m) {
         m.innerHTML = "Gagal Memuat! Mulai Ulang Konsol Anda ...";
-        m.style.color = "yellow";
+        m.style.color = "#ff0000";
     }
 }
 
