@@ -53,7 +53,7 @@ async function doJb() {
     }
 
     if (fn.setuid.invoke(0) !== -1) {
-      msgs.innerHTML = "GoldHEN sudah Dimuat ...";
+      msgs.innerHTML ='<span style="color: #10e610;">GoldHEN v2.4b18.10 Dimuat ...</span>';
       return;
     }
 
