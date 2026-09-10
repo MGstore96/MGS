@@ -3,9 +3,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>7.00 - 13.00 Webkit by MGstore</title>
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
 <style>
-    /* Styling Tampilan Modern & Gaming Theme */
+    /* Styling Tampilan Modern & Gaming Theme (Selaras dengan index.html) */
     * {
         box-sizing: border-box;
         margin: 0;
@@ -176,23 +176,14 @@ function DLProgress(e){
     }
 }
 
-// Fungsi untuk menjalankan exploit
-function runExploit() {
-    setMsg("Menjalankan Exploit...", "running");
-    
-    // Panggil fungsi atau load script exploit Anda di sini.
-    // Contoh: if(typeof loader === 'function') { loader(); }
-}
-
 function DisplayCacheProgress(){
     setMsg("Cache Berhasil Diinstal ✔", "success");
     var bar = document.getElementById("pbar");
     if (bar) {
         bar.style.width = "100%";
     }
-    // Langsung jalankan exploit setelah jeda 1 detik
     setTimeout(function(){
-        runExploit();
+        setMsg("Sekarang, tutup dan buka kembali browser Anda. ...", "success");
     }, 1000);
 }
 
@@ -200,12 +191,7 @@ window.applicationCache.addEventListener("progress", DLProgress, false);
 window.applicationCache.oncached = function(e){ DisplayCacheProgress(); };
 window.applicationCache.onupdateready = function(e){ DisplayCacheProgress(); };
 window.applicationCache.onerror = function(e){
-    // Jika cache sudah terinstal sebelumnya (noupdate/error karena offline), langsung jalankan exploit
-    runExploit();
-};
-window.applicationCache.onnoupdate = function(e){
-    // Jika cache sudah ada dan tidak ada pembaruan
-    runExploit();
+    setMsg("Kesalahan Saat Menginstal Cache! - Bersihkan dan Buka Kembali Browser Anda ...", "error");
 };
 </script>
 
