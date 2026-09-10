@@ -36,7 +36,7 @@ const lines = [];
 function hostOk() {
     var m = document.getElementById("msgs");
     if (m) {
-        m.innerHTML = "GoldHEN v2.4b18.10 Dimuat ...";
+        m.innerHTML ='<span style="color: #10e610;">GoldHEN v2.4b18.10 Dimuat ...</span>';
     }
 }
 
@@ -676,7 +676,7 @@ function makeRpc(worker) {
                 mark("ALREADY-ROOT", "getuid=" + uid0 + " setuid(0)=" + su0);
                 var m = document.getElementById("msgs");
                 if (m) {
-                    m.innerHTML = "GoldHEN sudah Dimuat ...";
+                    m.innerHTML ='<span style="color: #10e610;">GoldHEN Sudah Dimuat ...</span>';
                 }
                 return;
             }
