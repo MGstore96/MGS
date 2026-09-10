@@ -53,7 +53,7 @@ async function doJb() {
     }
 
     if (fn.setuid.invoke(0) !== -1) {
-      msgs.innerHTML ='<span style="color: #10e610;">GoldHEN v2.4b18.10 Dimuat ...</span>';
+      msgs.innerHTML ='<span style="color: #10e610;">GoldHEN Sudah Dimuat ...</span>';
       return;
     }
 
@@ -111,7 +111,7 @@ async function doJb() {
       load_bin(bin_u8);
     }
 
-    msgs.innerHTML = "GoldHEN v2.4b18.10 Dimuat ...";
+    msgs.innerHTML ='<span style="color: #10e610;">GoldHEN v2.4b18.10 Dimuat ...</span>';
     logger.info("===END===");
   } catch (e) {
     msgs.innerHTML = "Gagal Memuat! Mulai Ulang Konsol Anda ...";
