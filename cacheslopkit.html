@@ -177,15 +177,17 @@ function DLProgress(e){
 }
 
 function DisplayCacheProgress(){
-    setMsg("Cache Berhasil Diinstal ✔", "success");
+    setMsg("Cache Berhasil Diinstal", "success");
     var bar = document.getElementById("pbar");
     if (bar) {
         bar.style.width = "100%";
     }
+    // Mengarahkan kembali ke menu utama (index.html) setelah 1 detik
     setTimeout(function(){
-        setMsg("Sekarang, tutup dan buka kembali browser Anda. ...", "success");
-    }, 1000);
+        window.location.href = "index.html";
+    }, 1500);
 }
+
 
 window.applicationCache.addEventListener("progress", DLProgress, false);
 window.applicationCache.oncached = function(e){ DisplayCacheProgress(); };
