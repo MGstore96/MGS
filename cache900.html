@@ -183,10 +183,12 @@ function DisplayCacheProgress(){
     if (bar) {
         bar.style.width = "100%";
     }
+    // Mengarahkan kembali ke menu utama (index.html) setelah 1 detik
     setTimeout(function(){
-        setMsg("Sekarang, tutup dan buka kembali browser Anda. ...", "success");
+        window.location.href = "index.html";
     }, 1500);
 }
+
 
 window.applicationCache.addEventListener("progress", DLProgress, false);
 window.applicationCache.oncached = function(e){ DisplayCacheProgress(); };
