@@ -1866,7 +1866,7 @@ function runPayload(path) {
 kexploit().then(() => {
 	setTimeout(() => {
 		runPayload("./goldhen_2.4b18.10.bin");
-		msgs.innerHTML ='<span style="color: #10e610;">GoldHEN v2.4b18.10 Dimuat ...</span>';
+		msgs.innerHTML ='<span style="color: #10e610;">GoldHEN Sedang Dimuat ...</span>';
 	},500);
 }).catch(() => {
     msgs.innerHTML = "Gagal Memuat! Mulai Ulang Konsol Anda ...";
