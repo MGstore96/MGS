@@ -1,146 +1,20 @@
 <!DOCTYPE html>
 <html lang="id" manifest="900.manifest">
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>7.00 - 13.52 Webkit by MGstore</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="modifikasi.css">
 <style>
-    * {
+  * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-    }
-
-    body {
-        background: #0f172a;
-        color: #f8fafc;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .container {
-        background: #1e293b;
-        border: 3px solid #05c4c5;
-        border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        width: 100%;
-        max-width: 800px;
-        padding: 30px 20px;
-        margin: auto;
-    }
-
-    .logo-container {
-        margin-bottom: 15px;
-    }
-
-    .logo {
-        max-width: 100px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
-
-    .header-title {
-        color: #e1e8ea;
-        font-size: 26px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: none;
-        margin-bottom: 25px;
-        border-bottom: 2px solid #334155;
-        padding-bottom: 15px;
-    }
-
-    .status-card {
-        background: #0f172a;
-        border-radius: 12px;
-        border: 1px solid #38bdf8;
-        padding: 30px 20px;
-        margin: 20px 0;
-        box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.1);
-    }
-
-    #msgs {
-        font-size: 22px;
-        color: #ffffff; 
-        font-weight: 600;
-        line-height: 1.5;
-        margin-bottom: 15px;
-        transition: color 0.3s ease;
-    }
-
-    #msgs.success {
-        color: #22c55e !important;
-    }
-
-    #msgs.error {
-        color: #e50707 !important;
-    }
-
-    .progress-container {
-        width: 100%;
-        background-color: #334155;
-        border-radius: 10px;
-        overflow: hidden;
-        height: 16px;
-        margin-top: 15px;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-    }
-
-    .progress-bar {
-        width: 0%;
-        height: 100%;
-        background: linear-gradient(90deg, #38bdf8, #818cf8);
-        border-radius: 10px;
-        transition: width 0.3s ease;
-    }
-
-    .thanks-section {
-        margin-top: 30px;
-        font-size: 14px;
-        color: #94a3b8;
-        border-top: 1px solid #334155;
-        padding-top: 20px;
-    }
-
-    .thanks-section h3 {
-        color: #f00830;
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-
-    .credits-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .credit-item {
-        background: hwb(79 13% 8%);
-        color: #020203;
-        padding: 4px 10px;
-        border-radius: 6px;
-        font-size: 13px;
-        font-weight: 500;
-    }
-
-    footer {
-        margin-top: 20px;
-        font-size: 12px;
-        color: #ffffff;
-    }
+  }
+  
+  
 </style>
-</head>
-<body>
 
+<body>
 <script>
 history.replaceState(null,null,'index.html');
 var histlength=history.length;
@@ -166,6 +40,15 @@ function DLProgress(e){
     var bar = document.getElementById("pbar");
     if (bar) {
         bar.style.width = Percent + "%";
+        
+        // Logika perubahan warna berdasarkan persentase
+        if (Percent < 30) {
+            bar.style.background = 'linear-gradient(90deg, #ff6b6b, #d90404)'; // Merah
+        } else if (Percent < 70) {
+            bar.style.background = 'linear-gradient(90deg, #fceb00, #c4b000)'; // Kuning
+        } else {
+            bar.style.background = 'linear-gradient(90deg, #e8fb01, #08e238)'; // Hijau (Warna asli)
+        }
     }
 }
 
@@ -174,6 +57,122 @@ function DisplayCacheProgress(){
     var bar = document.getElementById("pbar");
     if (bar) {
         bar.style.width = "100%";
+        bar.style.background = 'linear-gradient(90deg, #e8fb01, #08e238)'; // Pastikan berwarna hijau saat 100%
+    }
+    setTimeout(function(){
+        window.location.href = "index.html";
+    }, 1500);
+}
+
+window.applicationCache.addEventListener("progress", DLProgress, false);
+window.applicationCache.oncached = function(e){ DisplayCacheProgress(); };
+window.applicationCache.onupdateready = function(e){ DisplayCacheProgress(); };
+window.applicationCache.onerror = function(e){
+    setMsg("Kesalahan Saat Menginstal Cache! - Bersihkan dan Buka Kembali Browser Anda ...", "error");
+};
+</script>
+
+<div class="container">
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo MGstore" class="logo">
+    </div>
+
+    <div class="header-title">Webkit By MG Store
+    
+    <div class="status-card">
+        <div id="msgs">Memulai Instalasi Cache...</div>
+        <div class="progress-container">
+            <div id="pbar" class="progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="thanks-section">
+        <h3>Special Thanks to:</h3>
+        <div class="credits-list">
+            <span class="credit-item">GamerHack93</span>
+            <span class="credit-item">sleirsgoevy</span>
+            <span class="credit-item">TheFlow</span>
+            <span class="credit-item">Flatz</span>
+            <span class="credit-item">Egycnq</span>
+            <span class="credit-item">Jordy</span>
+            <span class="credit-item">Sonic-Iso</span>
+            <span class="credit-item">Abc</span>
+            <span class="credit-item">Prb29327239</span>
+            <span class="credit-item">Feyzee61</span>
+            <span class="credit-item">AlAzif</span>
+            <span class="credit-item">ChendoChap</span>
+            <span class="credit-item">Kameleonre_</span>
+            <span class="credit-item">SiSTR0</span>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; MGstore Webkit Host</p>
+</footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="id" manifest="slopkit.manifest">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7.00 - 13.52 Webkit by MGstore</title>
+<link rel="stylesheet" href="modifikasi.css">
+<style>
+  * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+  }
+  
+  
+</style>
+
+<body>
+<script>
+history.replaceState(null,null,'index.html');
+var histlength=history.length;
+history.go(-histlength);
+
+function setMsg(htmlContent, type) {
+    var msgsElem = document.getElementById("msgs");
+    if(!msgsElem) return;
+    
+    msgsElem.className = ""; 
+    if (type === "success") {
+        msgsElem.classList.add("success");
+    } else if (type === "error") {
+        msgsElem.classList.add("error");
+    }
+    msgsElem.innerHTML = htmlContent;
+}
+
+function DLProgress(e){
+    Percent = Math.round(e.loaded / e.total * 100);
+    setMsg("Menginstal Cache Offline: " + Percent + "%", "running");
+    
+    var bar = document.getElementById("pbar");
+    if (bar) {
+        bar.style.width = Percent + "%";
+        
+        // Logika perubahan warna berdasarkan persentase
+        if (Percent < 30) {
+            bar.style.background = 'linear-gradient(90deg, #ff6b6b, #d90404)'; // Merah
+        } else if (Percent < 70) {
+            bar.style.background = 'linear-gradient(90deg, #fceb00, #c4b000)'; // Kuning
+        } else {
+            bar.style.background = 'linear-gradient(90deg, #e8fb01, #08e238)'; // Hijau (Warna asli)
+        }
+    }
+}
+
+function DisplayCacheProgress(){
+    setMsg("Cache Berhasil Diinstal", "success");
+    var bar = document.getElementById("pbar");
+    if (bar) {
+        bar.style.width = "100%";
+        bar.style.background = 'linear-gradient(90deg, #e8fb01, #08e238)'; // Pastikan berwarna hijau saat 100%
     }
     setTimeout(function(){
         window.location.href = "index.html";
