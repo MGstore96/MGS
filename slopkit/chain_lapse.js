@@ -668,7 +668,7 @@ function makeRpc(worker) {
         if (!sameI64(wit, mainCtx.P)) { throw new Error("pivot failed"); }
         const pid = sc(SYS.getpid).i32;
         mark("PID", String(pid));
-		
+
         try {
             var uid0 = sc(SYS.getuid).i32;
             var su0 = sc(SYS.setuid, 0).i32;
@@ -3543,6 +3543,7 @@ function makeRpc(worker) {
                                                     : "returned " + rc);
                                             payloadRunning = launched;
                                             if (launched) {
+                                                hostOk();
                                                 mark("PAYLOAD-RUNNING", "bytes="
                                                     + payload.length + " entry="
                                                     + entry);
@@ -3841,9 +3842,6 @@ function makeRpc(worker) {
                 hostFail();
             }
         } else if (repaired && cleanupDone) {
-			if (payloadRunning) {
-                hostOk();
-            }
             mark("SAFE-TO-EXIT", "chunkX=freed-once-by-fd" + pktoptsTwins[0]
                 + " chunkY=leaked-0x80 pipes=+1ref-each"
                 + " leaks=2-pipe-pairs+0x80");
